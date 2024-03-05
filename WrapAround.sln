@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{71C94A3D-D387-4DD9-BC2E-EA28C77F724C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AEB70862-AE0E-4313-B53C-1908216B9110}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{52260C75-3086-4579-AD62-F5DE92CC94E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.Blazor", "src\WrapAround.Blazor\WrapAround.Blazor.csproj", "{A9439189-413B-43ED-9948-1058B6DAC504}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9439189-413B-43ED-9948-1058B6DAC504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9439189-413B-43ED-9948-1058B6DAC504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9439189-413B-43ED-9948-1058B6DAC504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9439189-413B-43ED-9948-1058B6DAC504}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A9439189-413B-43ED-9948-1058B6DAC504} = {AEB70862-AE0E-4313-B53C-1908216B9110}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41857A2E-9325-45DF-9BCC-CFA0EDB03F6F}
+	EndGlobalSection
+EndGlobal
