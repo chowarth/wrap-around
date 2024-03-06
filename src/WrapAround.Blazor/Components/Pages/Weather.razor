@@ -1,7 +1,6 @@
 ﻿@page "/weather"
 @rendermode InteractiveServer
-
-<MyMudProviders />
+@* @rendermode @(new InteractiveServerRenderMode(prerender: false)) *@
 
 <PageTitle>Weather</PageTitle>
 

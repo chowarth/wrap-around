@@ -1,39 +1,44 @@
-﻿@using WrapAround.Blazor.Components
-@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase
 
-<MyMudThemeProvider />
+<MyMudProviders />
 
-<div class="page mud-layout">
-
-    <div class="sidebar mud-elevation-1">
-        <div class="top-row mud-drawer-head">
-            <div>
-                <a class="navbar-brand" href="https://mudblazor.com/" target="_blank">MudBlazor</a>
-            </div>
-        </div>
-
-        <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-        <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-            <NavMenu />
-        </div>
-
-    </div>
-
-     <main>
-        <div class="top-row px-4">
-            <MudIconButton Icon="@Icons.Custom.Brands.MudBlazor" Style="color: white;" Link="https://mudblazor.com/" Target="_blank" />
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Style="color: white;" Link="https://github.com/MudBlazor/MudBlazor/" Target="_blank" />
-        </div>
-
-        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-2 pt-2">
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudText Typo="Typo.h5" Class="ml-3">Wrap Around</MudText>
+        <MudStack Row="true"
+                  Spacing="0"
+                  Justify="Justify.FlexStart"
+                  AlignItems="AlignItems.Center">
+            <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">
+                Home
+            </MudNavLink>
+            <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">
+                Counter
+            </MudNavLink>
+            <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Cloud">
+                Weather
+            </MudNavLink>
+        </MudStack>
+        <MudSpacer />
+        <MudMenu AnchorOrigin="Origin.BottomRight">
+            <ActivatorContent>
+                <MudAvatar Variant="Variant.Outlined">CH</MudAvatar>
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem Icon="@Icons.Material.Filled.Settings">Settings</MudMenuItem>
+                <MudMenuItem Icon="@Icons.Material.Filled.Logout">Logout</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    </MudAppBar>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-2 pt-2">
             @Body
         </MudContainer>
-    </main>
-</div>
+    </MudMainContent>
+</MudLayout>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
-
