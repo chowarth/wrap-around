@@ -6,22 +6,22 @@
 
 <MudCard Class="pa-4">
     <MudTotalCalendar ButtonVariant="Variant.Outlined" ShowDayTotal="false" Outlined="false" Elevation="0" Items="_sessions" Values="BuildTotals()">
-@*         <CellTemplate>
+        <CellTemplate>
             <MudPaper Outlined="true" Class="pa-1 ma-1">
                 <MudStack Spacing="0">
                     <MudText Typo="Typo.subtitle2" Align="Align.Center">@(((WrapAroundSession)context).Text)</MudText>
-                    <MudText Typo="Typo.subtitle1" Align="Align.Center"> *@
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center">
                         @*
                         Start time doesn't have a value at the moment.
                         Think about fleshing out the data models properly
                         for a database.
                         Get a db set up running in Docker!
                         *@
-@*                         @(((WrapAroundSession)context).Duration.TotalMinutes.ToString("0 mins"))
+                        @(((WrapAroundSession)context).Duration.TotalMinutes.ToString("0 mins"))
                     </MudText>
                 </MudStack>
             </MudPaper>
-        </CellTemplate> *@
+        </CellTemplate>
     </MudTotalCalendar>
 </MudCard>
 
@@ -31,57 +31,57 @@
     [
         // Week 1
         new () { Text = "Breakfast Club", Start = DateTime.Today, Duration = TimeSpan.FromMinutes(60), Cost = 3.00},
-    new () { Text = "After School Club", Start = DateTime.Today, Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-    new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(1), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-    new () { Text = "After School Club", Start = DateTime.Today.AddDays(1), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-    new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(3), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-    new () { Text = "After School Club", Start = DateTime.Today.AddDays(3), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
+        new () { Text = "After School Club", Start = DateTime.Today, Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
+        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(1), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
+        new () { Text = "After School Club", Start = DateTime.Today.AddDays(1), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
+        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(3), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
+        new () { Text = "After School Club", Start = DateTime.Today.AddDays(3), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
 
-    // Week 2
-    new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(7), Duration = TimeSpan.FromMinutes(60), Cost = 3.00},
-    new () { Text = "After School Club", Start = DateTime.Today.AddDays(7), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-    new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(8), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-    new () { Text = "After School Club", Start = DateTime.Today.AddDays(8), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-    new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(10), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-    new () { Text = "After School Club", Start = DateTime.Today.AddDays(10), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 }
+        // Week 2
+        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(7), Duration = TimeSpan.FromMinutes(60), Cost = 3.00},
+        new () { Text = "After School Club", Start = DateTime.Today.AddDays(7), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
+        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(8), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
+        new () { Text = "After School Club", Start = DateTime.Today.AddDays(8), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
+        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(10), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
+        new () { Text = "After School Club", Start = DateTime.Today.AddDays(10), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 }
     ];
 
     private List<Value> BuildTotals()
     {
         ValueDefinition hours = new()
-            {
-                Name = "Hours",
-                FormatFunc = seconds => TimeSpan.FromHours(seconds).ToString(@"h\:mm")
-            };
+        {
+            Name = "Hours",
+            FormatFunc = seconds => TimeSpan.FromHours(seconds).ToString(@"h\:mm")
+        };
 
         ValueDefinition cost = new()
-            {
-                Name = "Cost",
-                Units = "£",
-                PrefixUnits = true
-            };
+        {
+            Name = "Cost",
+            Units = "£",
+            PrefixUnits = true
+        };
 
         List<Value> totals = [];
 
         var groupedSessions = _sessions
             .GroupBy(x => x.Start.Date)
-            .ToDictionary(x => x.Key, x => x.Select(y => y));
+            .ToDictionary(x => x.Key, x => x);
 
         foreach (var dateGroup in groupedSessions)
         {
-            totals.Add(new()
-                {
-                    Definition = hours,
-                    Date = dateGroup.Key,
-                    Amount = dateGroup.Value.Sum(x => x.Duration.TotalHours)
-                });
+            totals.Add(new Value()
+            {
+                Definition = hours,
+                Date = dateGroup.Key,
+                Amount = dateGroup.Value.Sum(x => x.Duration.TotalHours)
+            });
 
-            totals.Add(new()
-                {
-                    Definition = cost,
-                    Date = dateGroup.Key,
-                    Amount = dateGroup.Value.Sum(x => x.Cost)
-                });
+            totals.Add(new Value()
+            {
+                Definition = cost,
+                Date = dateGroup.Key,
+                Amount = dateGroup.Value.Sum(x => x.Cost)
+            });
         }
 
         return totals;
