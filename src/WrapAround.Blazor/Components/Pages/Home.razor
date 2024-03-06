@@ -1,22 +1,21 @@
 ﻿@page "/"
 @using Heron.MudTotalCalendar
 @using WrapAround.Blazor.Data
+@using WrapAround.Blazor.Services
+
+@inject IWrapAroundSessionService SessionService;
 
 <PageTitle>Home</PageTitle>
 
 <MudCard Class="pa-4">
-    <MudTotalCalendar ButtonVariant="Variant.Outlined" ShowDayTotal="false" Outlined="false" Elevation="0" Items="_sessions" Values="BuildTotals()">
+    <MudTotalCalendar ShowDayTotal="false" Outlined="false" Elevation="0" Items="_sessions" Values="BuildTotals()">
         <CellTemplate>
             <MudPaper Outlined="true" Class="pa-1 ma-1">
                 <MudStack Spacing="0">
-                    <MudText Typo="Typo.subtitle2" Align="Align.Center">@(((WrapAroundSession)context).Text)</MudText>
+                    <MudText Typo="Typo.subtitle2" Align="Align.Center">
+                        @context.Text
+                    </MudText>
                     <MudText Typo="Typo.subtitle1" Align="Align.Center">
-                        @*
-                        Start time doesn't have a value at the moment.
-                        Think about fleshing out the data models properly
-                        for a database.
-                        Get a db set up running in Docker!
-                        *@
                         @(((WrapAroundSession)context).Duration.TotalMinutes.ToString("0 mins"))
                     </MudText>
                 </MudStack>
@@ -27,24 +26,12 @@
 
 @code
 {
-    private readonly List<WrapAroundSession> _sessions =
-    [
-        // Week 1
-        new () { Text = "Breakfast Club", Start = DateTime.Today, Duration = TimeSpan.FromMinutes(60), Cost = 3.00},
-        new () { Text = "After School Club", Start = DateTime.Today, Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(1), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-        new () { Text = "After School Club", Start = DateTime.Today.AddDays(1), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(3), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-        new () { Text = "After School Club", Start = DateTime.Today.AddDays(3), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
+    private IEnumerable<WrapAroundSession>? _sessions;
 
-        // Week 2
-        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(7), Duration = TimeSpan.FromMinutes(60), Cost = 3.00},
-        new () { Text = "After School Club", Start = DateTime.Today.AddDays(7), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(8), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-        new () { Text = "After School Club", Start = DateTime.Today.AddDays(8), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 },
-        new () { Text = "Breakfast Club", Start = DateTime.Today.AddDays(10), Duration = TimeSpan.FromMinutes(60), Cost = 3.00 },
-        new () { Text = "After School Club", Start = DateTime.Today.AddDays(10), Duration = TimeSpan.FromMinutes(90), Cost = 5.00 }
-    ];
+    protected override async Task OnInitializedAsync()
+    {
+        _sessions = await SessionService.GetSessions();
+    }
 
     private List<Value> BuildTotals()
     {
@@ -63,7 +50,7 @@
 
         List<Value> totals = [];
 
-        var groupedSessions = _sessions
+        var groupedSessions = _sessions!
             .GroupBy(x => x.Start.Date)
             .ToDictionary(x => x.Key, x => x);
 

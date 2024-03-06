@@ -1,5 +1,6 @@
 using MudBlazor.Services;
 using WrapAround.Blazor.Components;
+using WrapAround.Blazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddMudServices();
+
+builder.Services.AddSingleton<IWrapAroundSessionService, WrapAroundSessionService>();
 
 var app = builder.Build();
 
