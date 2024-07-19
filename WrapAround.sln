@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.AppHost", "src\W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.ServiceDefaults", "src\WrapAround.ServiceDefaults\WrapAround.ServiceDefaults.csproj", "{EFC6B7A5-BDCB-467B-8B04-E9F8C8FE7CEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrapAround.AppHost.Tests.Integration", "tests\WrapAround.AppHost.Tests.Integration\WrapAround.AppHost.Tests.Integration.csproj", "{FA388B3A-18E1-4B9A-834A-F16D50F91E65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.AppHost.Tests.Integration", "tests\WrapAround.AppHost.Tests.Integration\WrapAround.AppHost.Tests.Integration.csproj", "{FA388B3A-18E1-4B9A-834A-F16D50F91E65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
