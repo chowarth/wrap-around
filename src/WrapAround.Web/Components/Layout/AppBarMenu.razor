@@ -10,22 +10,26 @@
     <MudSpacer/>
     <AuthorizeView>
         <Authorized>
-            <MudIconButton Href="Account/Manage"
+            <MudIconButton
+                Href="Account/Manage"
                 Icon="@Icons.Material.Filled.Settings"/>
             <MudForm action="Account/Logout" method="post">
                 <AntiforgeryToken />
                 <input type="hidden" name="ReturnUrl" value="" />
-                <MudIconButton ButtonType="ButtonType.Submit"
-                                Icon="@Icons.Material.Filled.Logout" />
+                <MudIconButton
+                    ButtonType="ButtonType.Submit"
+                    Icon="@Icons.Material.Filled.Logout" />
             </MudForm>
         </Authorized>
         <NotAuthorized>
-            <MudTooltip Text="Register">
+            <MudTooltip
+                Text="Register">
                 <MudIconButton
                     Href="Account/Register"
                     Icon="@Icons.Material.Filled.AppRegistration"/>
             </MudTooltip>
-            <MudTooltip Text="Login">
+            <MudTooltip
+                Text="Login">
                 <MudIconButton
                     Href="Account/Login"
                     Icon="@Icons.Material.Filled.Login"/>
