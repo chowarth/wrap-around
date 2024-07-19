@@ -1,4 +1,4 @@
-﻿<MudAppBar Color="Color.Primary" Elevation="2">
+<MudAppBar Elevation="2">
     <MudStack
         Row="true"
         Spacing="0"
@@ -6,30 +6,20 @@
         <MudIconButton
             Href="/"
             Icon="@Icons.Material.Filled.Home"/>
-        <MudIconButton
-            Href="auth"
-            Icon="@Icons.Material.Filled.Lock"/>
     </MudStack>
     <MudSpacer/>
     <AuthorizeView>
         <Authorized>
-            @* Do we need rendermode to be InteractiveServer for the menu to work? *@
-            <MudMenu
-                AnchorOrigin="Origin.BottomRight">
-                <ActivatorContent>
-                    <MudText Typo="Typo.h6" Class="ml-3">@context.User.Identity?.Name</MudText>
-                </ActivatorContent>
-                <ChildContent>
-                    <MudMenuItem
-                        Href="Account/Manage"
-                        Icon="@Icons.Material.Filled.Settings">Settings</MudMenuItem>
-                    <MudMenuItem
-                        Icon="@Icons.Material.Filled.Logout">Logout</MudMenuItem>
-                </ChildContent>
-            </MudMenu>
+            <MudIconButton Href="Account/Manage"
+                Icon="@Icons.Material.Filled.Settings"/>
+            <MudForm action="Account/Logout" method="post">
+                <AntiforgeryToken />
+                <input type="hidden" name="ReturnUrl" value="" />
+                <MudIconButton ButtonType="ButtonType.Submit"
+                                Icon="@Icons.Material.Filled.Logout" />
+            </MudForm>
         </Authorized>
         <NotAuthorized>
-            @* Do we need rendermode to be InteractiveServer for tooltips to work? *@
             <MudTooltip Text="Register">
                 <MudIconButton
                     Href="Account/Register"
