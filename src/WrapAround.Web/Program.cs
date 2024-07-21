@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using MudBlazor;
 using MudBlazor.Services;
+using WrapAround.Application;
+using WrapAround.Infrastructure;
 using WrapAround.Web.Components;
 using WrapAround.Web.Components.Account;
 using WrapAround.Web.Data;
@@ -12,6 +14,10 @@ builder.AddServiceDefaults();
 builder.AddSqlServerDbContext<ApplicationDbContext>("wraparound-db");
 
 // Add services to the container.
+builder.Services
+    .AddApplication()
+    .AddInfrastructure();
+
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 

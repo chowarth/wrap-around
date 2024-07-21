@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WrapAround.Application\WrapAround.Application.csproj" />
+    <ProjectReference Include="..\WrapAround.Infrastructure\WrapAround.Infrastructure.csproj" />
     <ProjectReference Include="..\WrapAround.ServiceDefaults\WrapAround.ServiceDefaults.csproj" />
   </ItemGroup>
 
