@@ -10,6 +10,8 @@ using WrapAround.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddSerilog();
+
 builder.AddServiceDefaults();
 builder.AddSqlServerDbContext<ApplicationDbContext>("wraparound-db");
 
