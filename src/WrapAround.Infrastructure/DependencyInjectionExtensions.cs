@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using WrapAround.Infrastructure.Persistence;
 using WrapAround.Infrastructure.Services;
 
@@ -8,13 +7,6 @@ namespace WrapAround.Infrastructure;
 
 public static class DependencyInjectionExtensions
 {
-    public static IHostApplicationBuilder AddInfrastructure(this IHostApplicationBuilder builder, string connectionName)
-    {
-        builder.AddSqlServerDbContext<ApplicationDbContext>(connectionName);
-
-        return builder;
-    }
-
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter()
