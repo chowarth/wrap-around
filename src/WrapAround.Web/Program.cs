@@ -1,19 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
 using MudBlazor;
 using MudBlazor.Services;
 using WrapAround.Application;
 using WrapAround.Infrastructure;
 using WrapAround.Web.Components;
 using WrapAround.Web.Components.Account;
-using WrapAround.Web.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddSerilog();
+builder.AddSerilog()
+    .AddInfrastructure("wraparound-db");
 
 builder.AddServiceDefaults();
-builder.AddSqlServerDbContext<ApplicationDbContext>("wraparound-db");
 
 // Add services to the container.
 builder.Services
@@ -32,24 +30,6 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
-
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = IdentityConstants.ApplicationScheme;
-    options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-})
-.AddIdentityCookies();
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-builder.Services.AddIdentityCore<User>(options =>
-    options.SignIn.RequireConfirmedAccount = true
-)
-.AddEntityFrameworkStores<ApplicationDbContext>()
-.AddSignInManager()
-.AddDefaultTokenProviders();
-
-builder.Services.AddSingleton<IEmailSender<User>, IdentityNoOpEmailSender>();
 
 var app = builder.Build();
 
