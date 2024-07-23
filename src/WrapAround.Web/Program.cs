@@ -1,7 +1,6 @@
 ﻿using WrapAround.Application;
 using WrapAround.Infrastructure;
 using WrapAround.Web;
-using WrapAround.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

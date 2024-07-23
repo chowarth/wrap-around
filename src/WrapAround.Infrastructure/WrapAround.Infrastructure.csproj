@@ -20,4 +20,8 @@
     <PackageReference Include="Serilog.Expressions" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WrapAround.Application\WrapAround.Application.csproj" />
+  </ItemGroup>
+
 </Project>

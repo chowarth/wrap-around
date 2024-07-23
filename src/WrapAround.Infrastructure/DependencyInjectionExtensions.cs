@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using WrapAround.Application.Abstractions;
 using WrapAround.Infrastructure.Persistence;
 using WrapAround.Infrastructure.Services;
 
@@ -11,6 +12,8 @@ public static class DependencyInjectionExtensions
     {
         services.AddDatabaseDeveloperPageExceptionFilter()
             .AddIdentity();
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }
