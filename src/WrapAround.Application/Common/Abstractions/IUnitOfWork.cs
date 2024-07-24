@@ -1,4 +1,4 @@
-﻿namespace WrapAround.Application.Abstractions;
+﻿namespace WrapAround.Application.Common.Abstractions;
 
 public interface IUnitOfWork
 {

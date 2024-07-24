@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace WrapAround.Application.Abstractions.Messaging;
+namespace WrapAround.Application.Common.Abstractions.Messaging;
 
 /// <summary>
 /// Represents the handler for a query of type <typeparamref name="TQuery"/>.

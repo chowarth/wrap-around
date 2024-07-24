@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using WrapAround.Application.Abstractions;
+using WrapAround.Application.Common.Abstractions;
 using WrapAround.Infrastructure.Persistence;
 using WrapAround.Infrastructure.Services;
 

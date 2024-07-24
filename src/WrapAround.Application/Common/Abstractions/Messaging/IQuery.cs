@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace WrapAround.Application.Abstractions.Messaging;
+namespace WrapAround.Application.Common.Abstractions.Messaging;
 
 /// <summary>
 /// Represents a query for type <typeparamref name="TResponse"/>.
