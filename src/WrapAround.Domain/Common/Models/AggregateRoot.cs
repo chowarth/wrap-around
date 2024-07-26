@@ -2,14 +2,15 @@
 
 namespace WrapAround.Domain.Common.Models;
 
-public abstract class AggregateRoot : Entity
+public abstract class AggregateRoot<TId> : Entity<TId>
+    where TId : notnull
 {
-    private readonly List<IDomainEvent> _domainEvents = new();
+    private readonly List<IDomainEvent> _domainEvents = [];
 
     public IReadOnlyCollection<IDomainEvent> DomainEvents
         => _domainEvents.AsReadOnly();
 
-    protected AggregateRoot(Guid id)
+    protected AggregateRoot(TId id)
         : base(id)
     {
     }
