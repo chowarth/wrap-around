@@ -2,6 +2,7 @@
 using MudBlazor;
 using MudBlazor.Services;
 using WrapAround.Web.Components.Account;
+using WrapAround.Web.Services;
 
 namespace WrapAround.Web;
 
@@ -12,10 +13,13 @@ internal static class DependencyInjectionExtensions
         services.AddAuthenticationComponents()
             .AddMudServices(config =>
             {
+                config.PopoverOptions.ThrowOnDuplicateProvider = false;
                 config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopCenter;
             })
             .AddRazorComponents()
             .AddInteractiveServerComponents();
+
+        services.AddSingleton<IWrapAroundSessionService, WrapAroundSessionService>();
 
         return services;
     }
