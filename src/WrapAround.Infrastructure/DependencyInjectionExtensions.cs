@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using WrapAround.Application.Common.Abstractions;
+using WrapAround.Application.Common.Abstractions.Persistence;
 using WrapAround.Infrastructure.Persistence;
 using WrapAround.Infrastructure.Services;
 
@@ -35,6 +36,7 @@ public static class DependencyInjectionExtensions
         .AddSignInManager()
         .AddDefaultTokenProviders();
 
+        services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<ApplicationDbContext>());
         services.AddSingleton<IEmailSender<User>, IdentityNoOpEmailSender>();
 
         return services;

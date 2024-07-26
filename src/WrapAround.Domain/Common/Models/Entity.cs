@@ -3,7 +3,7 @@ namespace WrapAround.Domain.Common.Models;
 
 public abstract class Entity : IEquatable<Entity>
 {
-    public Guid Id { get; protected set; }
+    public Guid Id { get; }
 
     protected Entity(Guid id)
     {
