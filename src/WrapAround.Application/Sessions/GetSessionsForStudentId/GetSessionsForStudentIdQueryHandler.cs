@@ -1,30 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WrapAround.Application.Common.Abstractions.Messaging;
+﻿using WrapAround.Application.Common.Abstractions.Messaging;
 using WrapAround.Application.Common.Abstractions.Persistence;
 using WrapAround.Domain.Sessions;
 
 namespace WrapAround.Application.Sessions.GetSessionsForStudentId;
 
-public record GetSessionsForStudentIdQuery(Guid StudentId) : IQuery<List<Session>>;
+public record GetSessionsForStudentIdQuery(Guid StudentId) : IQuery<IEnumerable<Session>>;
 
-public class GetSessionsForStudentIdQueryHandler : IQueryHandler<GetSessionsForStudentIdQuery, List<Session>>
+public class GetSessionsForStudentIdQueryHandler : IQueryHandler<GetSessionsForStudentIdQuery, IEnumerable<Session>>
 {
-    private readonly IDbContext _dbContext;
+    private readonly ISessionRepository _sessionRepository;
 
-    public GetSessionsForStudentIdQueryHandler(IDbContext dbContext)
+    public GetSessionsForStudentIdQueryHandler(ISessionRepository sessionRepository)
     {
-        _dbContext = dbContext;
+        _sessionRepository = sessionRepository;
     }
 
-    public async Task<List<Session>> Handle(GetSessionsForStudentIdQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<Session>> Handle(GetSessionsForStudentIdQuery request, CancellationToken cancellationToken)
     {
-        var sessions = await _dbContext.Set<Session>()
-            .Where(x => x.Attendees.Contains(request.StudentId.ToString()))
-            // TODO: Project to response DTO
-                // Should not include Attendees
-            // TODO: Create Student entity
-                // What domain should this be under, School?
-            .ToListAsync(cancellationToken);
+        var sessions = await _sessionRepository
+            .GetByStudentIdAsync(request.StudentId.ToString(), cancellationToken);
+        // TODO: Map to response DTO
+            // Should this be done here or in the repository?
+            // Should not include Attendees
+        // TODO: Create Student entity
+            // What domain should this be under, School?
 
         return sessions;
     }

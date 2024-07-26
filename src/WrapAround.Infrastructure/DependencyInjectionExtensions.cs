@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using WrapAround.Application.Common.Abstractions;
 using WrapAround.Application.Common.Abstractions.Persistence;
 using WrapAround.Infrastructure.Persistence;
 using WrapAround.Infrastructure.Services;
+using WrapAround.Infrastructure.Sessions.Persistence;
 
 namespace WrapAround.Infrastructure;
 
@@ -12,9 +12,16 @@ public static class DependencyInjectionExtensions
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         services.AddDatabaseDeveloperPageExceptionFilter()
+            .AddPersistence()
             .AddIdentity();
 
+        return services;
+    }
+
+    private static IServiceCollection AddPersistence(this IServiceCollection services)
+    {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<ISessionRepository, SessionRepository>();
 
         return services;
     }
@@ -36,7 +43,6 @@ public static class DependencyInjectionExtensions
         .AddSignInManager()
         .AddDefaultTokenProviders();
 
-        services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<ApplicationDbContext>());
         services.AddSingleton<IEmailSender<User>, IdentityNoOpEmailSender>();
 
         return services;

@@ -11,6 +11,11 @@ public class SessionId : ValueObject
         Value = value;
     }
 
+    public static SessionId Create(Guid id)
+    {
+        return new SessionId(id);
+    }
+
     public static SessionId CreateUnique()
     {
         return new SessionId(Guid.NewGuid());
