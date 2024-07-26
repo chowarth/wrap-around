@@ -2,12 +2,20 @@
 
 namespace WrapAround.Domain.Sessions;
 
-public class Session : AggregateRoot
+public class Session : AggregateRoot<SessionId>
 {
-    public List<string> Attendees { get; set; } = new ();
+    private readonly List<string> _attendees = [];
 
-    public Session(Guid id)
+    public IReadOnlyCollection<string> Attendees
+        => _attendees.AsReadOnly();
+
+    private Session(SessionId id)
         : base(id)
     {
+    }
+
+    public static Session Create()
+    {
+        return new(SessionId.CreateUnique());
     }
 }
