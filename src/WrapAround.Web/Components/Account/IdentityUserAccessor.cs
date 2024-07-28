@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using WrapAround.Infrastructure.Persistence;
+using WrapAround.Infrastructure.Common.Persistence;
 
 namespace WrapAround.Web.Components.Account;
 

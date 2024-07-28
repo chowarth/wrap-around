@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
-using WrapAround.Infrastructure.Persistence;
+using WrapAround.Infrastructure.Common.Persistence;
 using WrapAround.Web.Components.Account.Pages;
 using WrapAround.Web.Components.Account.Pages.Manage;
 

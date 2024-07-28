@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using WrapAround.Infrastructure.Persistence;
+using WrapAround.Infrastructure.Common.Persistence;
 
 namespace WrapAround.Web.Components.Account;
 

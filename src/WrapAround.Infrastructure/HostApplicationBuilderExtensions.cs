@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
-using WrapAround.Infrastructure.Persistence;
+using WrapAround.Infrastructure.Common.Persistence;
 
 namespace WrapAround.Infrastructure
 {
