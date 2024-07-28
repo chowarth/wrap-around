@@ -1,6 +1,6 @@
 ﻿using WrapAround.Domain.Sessions;
 
-namespace WrapAround.Application.Common.Abstractions.Persistence;
+namespace WrapAround.Application.Common.Persistence;
 
 public interface ISessionRepository
 {

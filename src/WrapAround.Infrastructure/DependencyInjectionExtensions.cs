@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using WrapAround.Application.Common.Abstractions.Persistence;
+using WrapAround.Application.Common.Persistence;
 using WrapAround.Infrastructure.Common.Persistence;
 using WrapAround.Infrastructure.Services;
 using WrapAround.Infrastructure.Sessions.Persistence;

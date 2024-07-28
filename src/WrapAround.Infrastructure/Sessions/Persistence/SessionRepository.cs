@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WrapAround.Application.Common.Abstractions.Persistence;
+using WrapAround.Application.Common.Persistence;
 using WrapAround.Domain.Sessions;
 using WrapAround.Infrastructure.Common.Persistence;
 

@@ -1,4 +1,4 @@
-﻿namespace WrapAround.Application.Common.Abstractions.Persistence;
+﻿namespace WrapAround.Application.Common.Persistence;
 
 public interface IUnitOfWork
 {

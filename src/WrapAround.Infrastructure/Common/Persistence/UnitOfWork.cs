@@ -1,4 +1,4 @@
-﻿using WrapAround.Application.Common.Abstractions.Persistence;
+﻿using WrapAround.Application.Common.Persistence;
 
 namespace WrapAround.Infrastructure.Common.Persistence;
 

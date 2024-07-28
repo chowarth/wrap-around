@@ -1,5 +1,5 @@
-﻿using WrapAround.Application.Common.Abstractions.Messaging;
-using WrapAround.Application.Common.Abstractions.Persistence;
+﻿using WrapAround.Application.Common.Messaging;
+using WrapAround.Application.Common.Persistence;
 using WrapAround.Domain.Sessions;
 
 namespace WrapAround.Application.Sessions.GetSessionsForStudentId;
