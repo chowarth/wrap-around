@@ -8,8 +8,8 @@ public class SessionConfiguration : IEntityTypeConfiguration<Session>
 {
     public void Configure(EntityTypeBuilder<Session> builder)
     {
-        builder.HasKey(m => m.Id);
-        builder.Property(m => m.Id)
+        builder.HasKey(session => session.Id);
+        builder.Property(session => session.Id)
             .HasConversion(
                 id => id.Value,
                 value => SessionId.Create(value)

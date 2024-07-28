@@ -20,10 +20,8 @@ public class GetSessionsForStudentIdQueryHandler : IQueryHandler<GetSessionsForS
         var sessions = await _sessionRepository
             .GetByStudentIdAsync(request.StudentId.ToString(), cancellationToken);
         // TODO: Map to response DTO
-            // Should this be done here or in the repository?
-            // Should not include Attendees
-        // TODO: Create Student entity
-            // What domain should this be under, School?
+            // Should not include Students
+            // Return ErrorOr
 
         return sessions;
     }

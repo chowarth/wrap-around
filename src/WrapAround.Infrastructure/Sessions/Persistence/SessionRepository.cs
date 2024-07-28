@@ -17,7 +17,7 @@ public class SessionRepository : ISessionRepository
     public async Task<IEnumerable<Session>> GetByStudentIdAsync(string studentId, CancellationToken cancellationToken = default)
     {
         return await _dbContext.Set<Session>()
-            .Where(session => session.Attendees.Contains(studentId))
+            // TODO: Filter on student
             .ToArrayAsync(cancellationToken);
     }
 }
