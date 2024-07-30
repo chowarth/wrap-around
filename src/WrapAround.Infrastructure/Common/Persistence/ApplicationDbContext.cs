@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WrapAround.Domain.School;
 using WrapAround.Domain.Sessions;
 
 namespace WrapAround.Infrastructure.Common.Persistence;

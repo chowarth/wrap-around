@@ -6,6 +6,6 @@ public interface IUnitOfWork
     /// Saves all the pending changes in the unit of work.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>The completed task.</returns>
-    Task SaveChangesAsync(CancellationToken cancellationToken = default);
+    /// <returns>The number of entities that have been saved.</returns>
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
