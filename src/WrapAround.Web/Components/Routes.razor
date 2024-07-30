@@ -1,5 +1,12 @@
 ﻿@using WrapAround.Web.Components.Account.Shared
 
+@*
+    The issue with setting global rendermode where trying to navigate to the login page
+    will constantly reload the page. See:
+    - https://github.com/dotnet/aspnetcore/issues/51476
+    - https://stackoverflow.com/questions/77599233/blazor-net-8-and-global-interactivity-issue-with-identity
+*@
+
 <Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)">

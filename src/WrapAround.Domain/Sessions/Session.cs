@@ -33,7 +33,9 @@ public sealed class Session : AggregateRoot<SessionId>
     public ErrorOr<Success> AddStudent(Student student)
     {
         if (_students.Contains(student))
-            return Error.Conflict("Student already added to session");
+        {
+            return Error.Conflict(description: "Student already added to session");
+        }
 
         _students.Add(student);
         AddDomainEvent(new StudentAddedToSessionDomainEvent(student));
@@ -43,7 +45,9 @@ public sealed class Session : AggregateRoot<SessionId>
 
     public void RemoveStudent(Student student)
     {
-        _students.Remove(student);
-        AddDomainEvent(new StudentRemovedFromSessionDomainEvent(student));
+        if (_students.Remove(student))
+        {
+            AddDomainEvent(new StudentRemovedFromSessionDomainEvent(student));
+        }
     }
 }
