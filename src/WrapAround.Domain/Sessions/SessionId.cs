@@ -2,7 +2,7 @@
 
 namespace WrapAround.Domain.Sessions;
 
-public class SessionId : ValueObject
+public sealed class SessionId : ValueObject
 {
     public Guid Value { get; }
 

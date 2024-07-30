@@ -1,8 +1,8 @@
 ﻿using WrapAround.Domain.Common.Models;
 
-namespace WrapAround.Domain.School;
+namespace WrapAround.Domain.Sessions;
 
-public class StudentId : ValueObject
+public sealed class StudentId : ValueObject
 {
     public Guid Value { get; }
 

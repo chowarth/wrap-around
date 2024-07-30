@@ -4,7 +4,7 @@ using WrapAround.Domain.Sessions;
 
 namespace WrapAround.Infrastructure.Sessions.Persistence;
 
-public class SessionConfiguration : IEntityTypeConfiguration<Session>
+internal sealed class SessionConfiguration : IEntityTypeConfiguration<Session>
 {
     public void Configure(EntityTypeBuilder<Session> builder)
     {

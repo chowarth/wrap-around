@@ -1,9 +1,8 @@
 ﻿using WrapAround.Domain.Common.Models;
 
-namespace WrapAround.Domain.School;
+namespace WrapAround.Domain.Sessions;
 
-// Which domain should this live under?
-public class Student : Entity<StudentId>
+public sealed class Student : Entity<StudentId>
 {
     public string FirstName { get; init; }
     public string LastName { get; init; }
