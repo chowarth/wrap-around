@@ -1,6 +1,6 @@
 ﻿using WrapAround.Domain.Common.Models;
 
-namespace WrapAround.Domain.Sessions;
+namespace WrapAround.Domain.Students;
 
 public sealed class StudentId : ValueObject
 {

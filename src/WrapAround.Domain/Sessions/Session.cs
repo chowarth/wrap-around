@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using WrapAround.Domain.Common.Models;
 using WrapAround.Domain.Sessions.DomainEvents;
+using WrapAround.Domain.Students;
 
 namespace WrapAround.Domain.Sessions;
 

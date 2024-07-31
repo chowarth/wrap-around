@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WrapAround.Domain.Sessions;
+using WrapAround.Domain.Students;
 
-namespace WrapAround.Infrastructure.Sessions.Persistence;
+namespace WrapAround.Infrastructure.Students;
 
 internal sealed class StudentConfiguration : IEntityTypeConfiguration<Student>
 {

@@ -1,4 +1,5 @@
 ﻿using WrapAround.Domain.Common.Events;
+using WrapAround.Domain.Students;
 
 namespace WrapAround.Domain.Sessions.DomainEvents;
 

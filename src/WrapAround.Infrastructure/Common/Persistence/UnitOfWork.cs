@@ -32,7 +32,7 @@ internal sealed class UnitOfWork : IUnitOfWork
     {
         List<EntityEntry<IAggregateRoot>> aggregateRoots = _dbContext.ChangeTracker
             .Entries<IAggregateRoot>()
-            .Where(entry => entry.Entity.DomainEvents.Any())
+            .Where(entry => entry.Entity.DomainEvents.Count > 0)
             .ToList();
 
         List<IDomainEvent> domainEvents = aggregateRoots
