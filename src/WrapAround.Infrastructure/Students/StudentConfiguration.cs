@@ -14,5 +14,7 @@ internal sealed class StudentConfiguration : IEntityTypeConfiguration<Student>
                 id => id.Value,
                 value => StudentId.Create(value)
             );
+
+        // TODO: Configure Student properties
     }
 }

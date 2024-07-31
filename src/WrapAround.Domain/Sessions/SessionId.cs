@@ -2,6 +2,7 @@
 
 namespace WrapAround.Domain.Sessions;
 
+// Should ID's be a readonly record struct?
 public sealed class SessionId : ValueObject
 {
     public Guid Value { get; }

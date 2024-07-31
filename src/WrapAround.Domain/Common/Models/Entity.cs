@@ -1,6 +1,8 @@
 ﻿
 namespace WrapAround.Domain.Common.Models;
 
+// If Id is a record, can we get rid of IEquatable?
+    // where TId : notnull, IEquatable<TId>
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
     where TId : notnull
 {
