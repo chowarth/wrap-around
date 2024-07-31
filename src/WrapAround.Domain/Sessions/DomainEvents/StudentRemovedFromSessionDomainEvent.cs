@@ -5,10 +5,10 @@ namespace WrapAround.Domain.Sessions.DomainEvents;
 
 public sealed class StudentRemovedFromSessionDomainEvent : IDomainEvent
 {
-    public Student Student { get; }
+    public StudentId StudentId { get; }
 
-    internal StudentRemovedFromSessionDomainEvent(Student student)
+    internal StudentRemovedFromSessionDomainEvent(StudentId studentId)
     {
-        Student = student;
+        StudentId = studentId;
     }
 }

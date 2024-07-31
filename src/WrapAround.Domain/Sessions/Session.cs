@@ -7,10 +7,11 @@ namespace WrapAround.Domain.Sessions;
 
 public sealed class Session : AggregateRoot<SessionId>
 {
-    private readonly List<Student> _students = [];
+    // TODO: How to configure the relationship between Session and Student?
+    //private readonly List<StudentId> _studentsIds = [];
 
-    public IReadOnlyCollection<Student> Students
-        => _students;
+    //public IReadOnlyCollection<StudentId> StudentsIds
+    //    => _studentsIds;
 
     public DateOnly Date { get; }
 
@@ -31,24 +32,24 @@ public sealed class Session : AggregateRoot<SessionId>
         return session;
     }
 
-    public ErrorOr<Success> AddStudent(Student student)
-    {
-        if (_students.Contains(student))
-        {
-            return Error.Conflict(description: "Student already added to session");
-        }
+    //public ErrorOr<Success> AddStudent(StudentId student)
+    //{
+    //    if (_studentsIds.Contains(student))
+    //    {
+    //        return Error.Conflict(description: "Student already added to session");
+    //    }
 
-        _students.Add(student);
-        AddDomainEvent(new StudentAddedToSessionDomainEvent(student));
+    //    _studentsIds.Add(student);
+    //    AddDomainEvent(new StudentAddedToSessionDomainEvent(student));
 
-        return Result.Success;
-    }
+    //    return Result.Success;
+    //}
 
-    public void RemoveStudent(Student student)
-    {
-        if (_students.Remove(student))
-        {
-            AddDomainEvent(new StudentRemovedFromSessionDomainEvent(student));
-        }
-    }
+    //public void RemoveStudent(StudentId student)
+    //{
+    //    if (_studentsIds.Remove(student))
+    //    {
+    //        AddDomainEvent(new StudentRemovedFromSessionDomainEvent(student));
+    //    }
+    //}
 }
