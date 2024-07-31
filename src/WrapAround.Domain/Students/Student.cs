@@ -2,11 +2,10 @@
 
 namespace WrapAround.Domain.Students;
 
-// TODO: Make into an aggregate root
 // TODO: Session should reference StudentId instead of Student
 // TODO: Create Guardian entity
 // TODO: Create Address entity
-public sealed class Student : Entity<StudentId>
+public sealed class Student : AggregateRoot<StudentId>
 {
     public string FirstName { get; init; }
     public string LastName { get; init; }
