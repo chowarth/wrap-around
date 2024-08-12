@@ -4,13 +4,13 @@ namespace WrapAround.Domain.Students;
 
 public sealed class Student : AggregateRoot<StudentId>
 {
-    public string FirstName { get; init; }
-    public string LastName { get; init; }
+    public string FirstName { get; }
+    public string LastName { get; }
 
     public string FullName
         => $"{FirstName} {LastName}";
 
-    // TODO: Guardians property
+    public Guardian? Guardian { get; private set; }
 
     private Student(StudentId id, string firstName, string lastName)
         : base(id)
