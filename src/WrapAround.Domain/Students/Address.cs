@@ -12,20 +12,20 @@ public sealed class Address : ValueObject
     public string PostCode { get; }
     public string Country { get; }
 
-    private Address(string streetLine1, string streetLine2, string streetLine3, string city, string county, string postCode, string country)
+    private Address(string streetLine1, string streetLine2, string streetLine3, string townOrCity, string county, string postCode, string country)
     {
         StreetLine1 = streetLine1;
         StreetLine2 = streetLine2;
         StreetLine3 = streetLine3;
-        TownOrCity = city;
+        TownOrCity = townOrCity;
         County = county;
         PostCode = postCode;
         Country = country;
     }
 
-    public static Address Create(string streetLine1, string streetLine2, string streetLine3, string city, string county, string postCode, string country)
+    public static Address Create(string streetLine1, string streetLine2, string streetLine3, string townOrCity, string county, string postCode, string country)
     {
-        return new Address(streetLine1, streetLine2, streetLine3, city, county, postCode, country);
+        return new Address(streetLine1, streetLine2, streetLine3, townOrCity, county, postCode, country);
     }
 
     protected override IEnumerable<object> GetEqualityComponents()
