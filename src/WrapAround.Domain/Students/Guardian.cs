@@ -11,7 +11,7 @@ public sealed class Guardian : Entity<GuardianId>
     public string Email { get; }
     public Address? Address { get; private set; }
     public IReadOnlyCollection<PhoneNumber> PhoneNumbers
-        => _phoneNumbers;
+        => _phoneNumbers.ToList();
 
     private Guardian(GuardianId id, string firstName, string lastName, string email)
         : base(id)
