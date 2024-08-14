@@ -15,6 +15,17 @@ internal sealed class StudentConfiguration : IEntityTypeConfiguration<Student>
                 value => StudentId.Create(value)
             );
 
-        // TODO: Configure Student properties
+        builder.Property(student => student.FirstName)
+            .HasMaxLength(100)
+            .IsRequired();
+
+        builder.Property(student => student.LastName)
+            .HasMaxLength(100)
+            .IsRequired();
+
+        //builder.HasOne<Guardian>()
+        //    .WithMany()
+        //    .HasForeignKey("GuardianId")
+        //    .IsRequired();
     }
 }
