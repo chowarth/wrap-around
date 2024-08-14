@@ -1,7 +1,7 @@
 ﻿var builder = DistributedApplication.CreateBuilder(args);
 
 var sqlPassword = builder.AddParameter("sql-password", secret: true);
-var database = builder.AddSqlServer("wraparound-sqlserver", password: sqlPassword)
+var database = builder.AddSqlServer("wraparound-sqlserver", password: sqlPassword, port: 1234)
     .WithDataVolume("wraparound-sql-data")
     .AddDatabase("wraparound-db");
 
