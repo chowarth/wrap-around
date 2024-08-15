@@ -23,11 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.ServiceDefaults"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.AppHost.Tests.Integration", "tests\WrapAround.AppHost.Tests.Integration\WrapAround.AppHost.Tests.Integration.csproj", "{FA388B3A-18E1-4B9A-834A-F16D50F91E65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrapAround.Infrastructure", "src\WrapAround.Infrastructure\WrapAround.Infrastructure.csproj", "{6D14FE92-FAA7-473B-B4AA-6E90E9C967D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.Infrastructure", "src\WrapAround.Infrastructure\WrapAround.Infrastructure.csproj", "{6D14FE92-FAA7-473B-B4AA-6E90E9C967D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrapAround.Application", "src\WrapAround.Application\WrapAround.Application.csproj", "{F2CC7FAC-AF51-49F2-870B-0B7F3EB56F29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.Application", "src\WrapAround.Application\WrapAround.Application.csproj", "{F2CC7FAC-AF51-49F2-870B-0B7F3EB56F29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrapAround.Domain", "src\WrapAround.Domain\WrapAround.Domain.csproj", "{FD7C1B46-CA3B-480C-8C85-E96BD289CBF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapAround.Domain", "src\WrapAround.Domain\WrapAround.Domain.csproj", "{FD7C1B46-CA3B-480C-8C85-E96BD289CBF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

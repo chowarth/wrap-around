@@ -1,0 +1,81 @@
+﻿@page "/dashboard"
+
+@attribute [Authorize]
+
+@using Heron.MudTotalCalendar
+@using Microsoft.AspNetCore.Authorization
+@using WrapAround.Web.Services
+
+<MudPopoverProvider />
+
+<PageTitle>Dashboard</PageTitle>
+
+@inject IWrapAroundSessionService SessionService;
+
+<MudCard>
+    <MudTotalCalendar ShowDayTotal="false" Outlined="true" Items="_sessions" Values="BuildTotals()">
+        <CellTemplate Context="cell_context">
+            <MudPaper Class="pa-1 ma-1 mud-primary">
+                <MudStack Spacing="0">
+                    <MudText Typo="Typo.subtitle2" Align="Align.Center">
+                        @cell_context.Text
+                    </MudText>
+                    <MudText Typo="Typo.subtitle1" Align="Align.Center">
+                        @(((WrapAroundSession)cell_context).Duration.TotalMinutes.ToString("0 mins"))
+                    </MudText>
+                </MudStack>
+            </MudPaper>
+        </CellTemplate>
+    </MudTotalCalendar>
+</MudCard>
+
+@code
+{
+    private IEnumerable<WrapAroundSession>? _sessions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _sessions = await SessionService.GetSessions();
+    }
+
+    private List<Value> BuildTotals()
+    {
+        ValueDefinition hours = new()
+            {
+                Name = "Hours",
+                FormatFunc = seconds => TimeSpan.FromHours(seconds).ToString(@"h\:mm")
+            };
+
+        ValueDefinition cost = new()
+            {
+                Name = "Cost",
+                Units = "£",
+                PrefixUnits = true
+            };
+
+        List<Value> totals = [];
+
+        var groupedSessions = _sessions!
+            .GroupBy(x => x.Start.Date)
+            .ToDictionary(x => x.Key, x => x);
+
+        foreach (var dateGroup in groupedSessions)
+        {
+            totals.Add(new Value()
+                {
+                    Definition = hours,
+                    Date = dateGroup.Key,
+                    Amount = dateGroup.Value.Sum(x => x.Duration.TotalHours)
+                });
+
+            totals.Add(new Value()
+                {
+                    Definition = cost,
+                    Date = dateGroup.Key,
+                    Amount = dateGroup.Value.Sum(x => x.Cost)
+                });
+        }
+
+        return totals;
+    }
+}
