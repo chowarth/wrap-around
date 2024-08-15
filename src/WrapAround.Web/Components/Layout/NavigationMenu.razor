@@ -1,0 +1,71 @@
+﻿@* App bar menu *@
+<MudAppBar Elevation="2">
+    <MudIconButton
+        Icon="@Icons.Material.Filled.Menu"
+        OnClick="@ToggleDrawer" />
+    <MudSpacer />
+    <AuthorizeView>
+        <Authorized>
+            <MudIconButton
+                Href="Account/Manage"
+                Icon="@Icons.Material.Filled.Settings" />
+            <MudForm action="Account/Logout" method="post">
+                <AntiforgeryToken />
+                <input type="hidden" name="ReturnUrl" value="" />
+                <MudIconButton
+                    ButtonType="ButtonType.Submit"
+                    Icon="@Icons.Material.Filled.Logout" />
+            </MudForm>
+        </Authorized>
+        <NotAuthorized>
+            <MudTooltip
+                Text="Register">
+                <MudIconButton
+                    Href="Account/Register"
+                    Icon="@Icons.Material.Filled.AppRegistration" />
+            </MudTooltip>
+            <MudTooltip
+                Text="Login">
+                <MudIconButton
+                    Href="Account/Login"
+                    Icon="@Icons.Material.Filled.Login" />
+            </MudTooltip>
+        </NotAuthorized>
+    </AuthorizeView>
+</MudAppBar>
+
+@* Drawer menu *@
+<MudDrawer
+    @bind-Open="@_drawerOpen"
+    Variant="DrawerVariant.Mini"
+    ClipMode="DrawerClipMode.Always"
+    Elevation="0"
+    OpenMiniOnHover="true">
+    <MudNavMenu>
+        <MudNavLink
+            Href="/"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Home">
+            Dashboard
+        </MudNavLink>
+        <MudNavLink
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.LocalLibrary">
+            Students
+        </MudNavLink>
+        <MudNavLink
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.People">
+            Staff
+        </MudNavLink>
+    </MudNavMenu>
+</MudDrawer>
+
+@code {
+    private bool _drawerOpen = false;
+
+    private void ToggleDrawer()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}
