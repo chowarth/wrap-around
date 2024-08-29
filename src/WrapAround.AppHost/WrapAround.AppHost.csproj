@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WrapAround.Migrations\WrapAround.Migrations.csproj" />
     <ProjectReference Include="..\WrapAround.Web\WrapAround.Web.csproj" />
   </ItemGroup>
 

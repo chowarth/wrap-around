@@ -8,4 +8,7 @@ var database = builder.AddSqlServer("wraparound-sqlserver", password: sqlPasswor
 builder.AddProject<Projects.WrapAround_Web>("wraparound-web")
     .WithReference(database);
 
+builder.AddProject<Projects.WrapAround_Migrations>("wraparound-migrations")
+    .WithReference(database);
+
 builder.Build().Run();

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-WrapAround.Migrations-afbb2a01-8900-44e4-991c-026e01ad0588</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\WrapAround.Infrastructure\WrapAround.Infrastructure.csproj" />
+      <ProjectReference Include="..\WrapAround.ServiceDefaults\WrapAround.ServiceDefaults.csproj" />
+    </ItemGroup>
+</Project>
