@@ -16,7 +16,7 @@ builder.AddSqlServerDbContext<ApplicationDbContext>("wraparound-db", configureDb
     // https://github.com/dotnet/efcore/issues/34431#issuecomment-2413845935
     options.ConfigureWarnings(warnings =>
     {
-        warnings.Log(RelationalEventId.PendingModelChangesWarning);
+        warnings.Ignore(RelationalEventId.PendingModelChangesWarning);
     });
 });
 
