@@ -1,6 +1,5 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using OpenTelemetry.Trace;
 using WrapAround.Infrastructure.Common.Persistence;
 
 namespace WrapAround.Migrations;
@@ -8,7 +7,7 @@ namespace WrapAround.Migrations;
 public class Worker : BackgroundService
 {
     public const string ActivityName = "MigrationService";
-    private static readonly ActivitySource _activitySource = new (ActivityName);
+    private static readonly ActivitySource _activitySource = new(ActivityName);
 
     private readonly IServiceProvider _serviceProvider;
     private readonly IHostApplicationLifetime _applicationLifetime;
@@ -34,7 +33,7 @@ public class Worker : BackgroundService
         }
         catch (Exception ex)
         {
-            activity?.RecordException(ex);
+            activity?.AddException(ex);
             throw;
         }
 

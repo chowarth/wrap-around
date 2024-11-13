@@ -3,7 +3,6 @@
 var sqlPassword = builder.AddParameter("sql-password", secret: true);
 var database = builder.AddSqlServer("wraparound-sqlserver", password: sqlPassword, port: 1234)
     .WithDataVolume("wraparound-sql-data")
-    .WithHealthCheck()
     .AddDatabase("wraparound-db");
 
 var migrations = builder.AddProject<Projects.WrapAround_Migrations>("wraparound-migrations")
